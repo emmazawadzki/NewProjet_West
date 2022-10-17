@@ -14,19 +14,13 @@ import java.text.SimpleDateFormat;
  * @author zawae
  */
 public class ProjetWest {
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        boolean Game1 =true;
-        while(Game1==true){
-            Partie(Game1);
-        }
-    }
-    
-    public static boolean Partie(boolean Game){
-        while(Game==true){
+        boolean game=true;
+        
+        while(game==true){
         System.out.println("Nouvelle partie");
         
         //Création de la date de départ
@@ -43,7 +37,19 @@ public class ProjetWest {
         String boissonF="";
         
         CowBoy[] persoPrincipal=new CowBoy[1];
-    
+        
+        Barman[] barman=new Barman[1];
+        barman[0]= new Barman("Bob","Biere");
+        
+        //Création de 5 Brigands
+        Brigand[] brigand=new Brigand[5];
+        brigand[0]= new Brigand("Joe",false,false);
+        brigand[1]= new Brigand("Averell",false,false);
+        brigand[2]= new Brigand("Jack",false,false);
+        brigand[3]= new Brigand("William",false,false);
+        brigand[4]= new Brigand("Rantanplan",false,false);
+        
+        //Demander nom à l'utilisateur + Boisson Favorite
         System.out.println("Avant de commencer, quelle est votre nom :");
         nom=keyboard.nextLine();
         System.out.println("Et quelle est votre boisson favorite :");
@@ -51,7 +57,9 @@ public class ProjetWest {
         
         persoPrincipal[0]=new CowBoy(nom,boissonF);
         
+        //Début de la partie
         System.out.println("Début de la partie :");
+        
         while(solde>=0){
             //Affichage de la date
             date=cal.getTime();
@@ -63,32 +71,35 @@ public class ProjetWest {
         
             System.out.println("Vous venez d'entrer dans un saloon");
             System.out.println("et allez jusqu'au Barman pour commander une boisson.");
+            
+            //Sert la boisson favorite au perso principal
+            barman[0].sert(barman[0].GetName(),persoPrincipal[0].GetDrink(),persoPrincipal[0].GetName());
+            
             solde-=5000;
             
             // Ajout de 1 jour à la date pour la prochaine partie
             cal.add(Calendar.DATE,1);
-        }
+        
         System.out.println("Game Over");
-        Game=false;
+        game=false;
         }
-        Scanner keyboard=new Scanner (System.in);
         String nouvellePartie="";
         System.out.println("Do you want to play again (O/N):");
         nouvellePartie=keyboard.nextLine();
-        System.out.println(nouvellePartie);
         System.out.println("Fin de la partie");
-        Game=false;
-        if(nouvellePartie.equals("O") ){
-            Game=true;
+        
+        if(nouvellePartie.equals("O") || nouvellePartie.equals("o") ){
+            game=true;
         }
-        else if(nouvellePartie.equals("N")){
-            Game=false;
+        else if(nouvellePartie.equals("N") || nouvellePartie.equals("n")){
+            game=false;
         }
         else{
             //A Modifier
             System.out.println("Erreur");
-            Game=false;
+            game=false;
         }
-        return Game;
+        }
+        
     }
  }
