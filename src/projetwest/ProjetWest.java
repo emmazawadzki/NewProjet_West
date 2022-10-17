@@ -19,6 +19,15 @@ public class ProjetWest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        boolean Game1 =true;
+        while(Game1==true){
+            Partie(Game1);
+        }
+    }
+    
+    public static boolean Partie(boolean Game){
+        while(Game==true){
+        System.out.println("Nouvelle partie");
         
         //Création de la date de départ
         Calendar cal = Calendar.getInstance();
@@ -60,5 +69,26 @@ public class ProjetWest {
             cal.add(Calendar.DATE,1);
         }
         System.out.println("Game Over");
+        Game=false;
+        }
+        Scanner keyboard=new Scanner (System.in);
+        String nouvellePartie="";
+        System.out.println("Do you want to play again (O/N):");
+        nouvellePartie=keyboard.nextLine();
+        System.out.println(nouvellePartie);
+        System.out.println("Fin de la partie");
+        Game=false;
+        if(nouvellePartie.equals("O") ){
+            Game=true;
+        }
+        else if(nouvellePartie.equals("N")){
+            Game=false;
+        }
+        else{
+            //A Modifier
+            System.out.println("Erreur");
+            Game=false;
+        }
+        return Game;
     }
  }
