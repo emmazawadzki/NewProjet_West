@@ -21,7 +21,7 @@ public class ProjetWest {
         boolean game=true;
         
         while(game==true){
-        System.out.println("Nouvelle partie");
+        System.out.println("- - - - Nouvelle partie - - - -");
         
         //Création de la date de départ
         Calendar cal = Calendar.getInstance();
