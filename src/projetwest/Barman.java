@@ -11,6 +11,8 @@ package projetwest;
 public class Barman extends Humain{
     private Humain PersonneDialogue;
     
+    public static final Barman BARMAN =new Barman("Bob","Biere");
+    
     public Barman(String name,String boissonFavorite){
         super(name,boissonFavorite);
     }

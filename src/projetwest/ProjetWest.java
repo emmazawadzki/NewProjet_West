@@ -32,22 +32,17 @@ public class ProjetWest {
         //Monnaie du jeu
         int solde=10000;
         
+        //Element pour scanner (nom, boissonFavorite)
         Scanner keyboard=new Scanner (System.in);
         String nom="";
         String boissonF="";
         
-        CowBoy[] persoPrincipal=new CowBoy[1];
         
-        Barman[] barman=new Barman[1];
-        barman[0]= new Barman("Bob","Biere");
+        //Création de 1 Barman
+        //Fait dans Barman
         
         //Création de 5 Brigands
-        Brigand[] brigand=new Brigand[5];
-        brigand[0]= new Brigand("Joe",false,false);
-        brigand[1]= new Brigand("Averell",false,false);
-        brigand[2]= new Brigand("Jack",false,false);
-        brigand[3]= new Brigand("William",false,false);
-        brigand[4]= new Brigand("Rantanplan",false,false);
+        //Fait dans classe Brigand
         
         //Demander nom à l'utilisateur + Boisson Favorite
         System.out.println("Avant de commencer, quelle est votre nom :");
@@ -55,25 +50,33 @@ public class ProjetWest {
         System.out.println("Et quelle est votre boisson favorite :");
         boissonF=keyboard.nextLine();
         
+        //Création personnage principale
+        CowBoy[] persoPrincipal=new CowBoy[1];
         persoPrincipal[0]=new CowBoy(nom,boissonF);
+        
+        //Création de 3 CowBoy
+        //Fait dans classe cowboy
         
         //Début de la partie
         System.out.println("Début de la partie :");
         
+        //La partie continue tant que le solde n'est pas négatif
         while(solde>=0){
             //Affichage de la date
             date=cal.getTime();
             stringDate= format.format(date); 
             System.out.println("Aujourd'hui, nous sommes le " + stringDate);
             
-            //Affichage du salde actuelle
+            //Affichage du solde actuelle
             System.out.println("Votre solde est de : " + solde);
         
+            //Suite histoire
             System.out.println("Vous venez d'entrer dans un saloon");
             System.out.println("et allez jusqu'au Barman pour commander une boisson.");
             
             //Sert la boisson favorite au perso principal
-            barman[0].sert(barman[0].GetName(),persoPrincipal[0].GetDrink(),persoPrincipal[0].GetName());
+            Barman barman = Barman.BARMAN;
+            barman.sert(barman.GetName(),persoPrincipal[0].GetDrink(),persoPrincipal[0].GetName());
             
             solde-=5000;
             

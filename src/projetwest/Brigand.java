@@ -12,6 +12,12 @@ public class Brigand extends Humain{
     private Boolean estEnPrison;
     private Boolean estMort;
     
+    public static final Brigand BRIGAND1 = new Brigand("Joe",false,false);
+    public static final Brigand BRIGAND2 = new Brigand("Averell",false,false);
+    public static final Brigand BRIGAND3 = new Brigand("Jack",false,false);
+    public static final Brigand BRIGAND4 = new Brigand("William",false,false);
+    public static final Brigand BRIGAND5 = new Brigand("Rantanplan",false,false);
+    
     public Brigand(String name){
         super(name);
     }

@@ -12,6 +12,8 @@ public class AlcoholDrink extends Drink{
     private int alcoholLevel;
     
     public static final AlcoholDrink Beer= new AlcoholDrink("Beer",25,8.0f,10);
+    public static final AlcoholDrink Wine= new AlcoholDrink("Wine",25,8.0f,10);
+    public static final AlcoholDrink Whisky= new AlcoholDrink("Whisky",5,8.0f,10);
     
     public AlcoholDrink(String name, int size, float price, int alcoholLevel){
         super(name,size,price);
