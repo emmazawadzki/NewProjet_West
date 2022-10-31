@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat; 
+import management.*;
 
 /**
  *
@@ -23,11 +24,6 @@ public class ProjetWest {
         while(game==true){
         System.out.println("- - - - Nouvelle partie - - - -");
         
-        //Création de la date de départ
-        Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
-        String stringDate= format.format(date); 
         
         //Monnaie du jeu
         int solde=10000;
@@ -60,12 +56,14 @@ public class ProjetWest {
         //Début de la partie
         System.out.println("Début de la partie :");
         
+        //Création de la date de départ
+        Time time = new Time(); //Création de la date de départ
+        Date date=time.newTime();
+        
         //La partie continue tant que le solde n'est pas négatif
         while(solde>=0){
             //Affichage de la date
-            date=cal.getTime();
-            stringDate= format.format(date); 
-            System.out.println("Aujourd'hui, nous sommes le " + stringDate);
+            time.displayTime(date);
             
             //Affichage du solde actuelle
             System.out.println("Votre solde est de : " + solde);
@@ -81,7 +79,7 @@ public class ProjetWest {
             solde-=5000;
             
             // Ajout de 1 jour à la date pour la prochaine partie
-            cal.add(Calendar.DATE,1);
+            date=time.addDay();
         
         System.out.println("Game Over");
         game=false;
