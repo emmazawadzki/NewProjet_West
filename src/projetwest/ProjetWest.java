@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 
 import management.*;
 import character.*;
+import drink.*;
 
 /**
  *
@@ -27,15 +28,32 @@ public class ProjetWest {
         boolean game=true;
         
         while(game==true){
+        //déclaration des classes    
+        Scanner keyboard=new Scanner (System.in);
+        
+        
+        //initialisation du choix de la boisson
+        Drink boissonF = new Drink("",10,5000);
+
+    
+            
+            
+        
+        //déclaration des variables   
+        //Monnaie du jeu
+        Money money = new Money();
+        money.initialiseMoney(10000);
+        
+        
+        
+        Sleep sleep = new Sleep();
+        
+        
         System.out.println("- - - - Nouvelle partie - - - -");
         
         //Monnaie du jeu
         int solde=10000;
         
-        //Element pour scanner (nom, boissonFavorite)
-        Scanner keyboard=new Scanner (System.in);
-        String nom="";
-        String boissonF="";
         
         
         //Création de 1 Barman
@@ -46,52 +64,54 @@ public class ProjetWest {
         
         //Demander nom à l'utilisateur + Boisson Favorite
         System.out.println("Avant de commencer, quelle est votre nom :");
-        nom=keyboard.nextLine();
+        String nom=keyboard.nextLine();
         System.out.println("Et quelle est votre boisson favorite :");
-        boissonF=keyboard.nextLine();
+        boissonF.name = keyboard.nextLine();
         
         //Création personnage principale
         ArrayList<CowBoy> persoPrin = new ArrayList <CowBoy>();
-        persoPrin.add( new CowBoy(nom,boissonF));
+        persoPrin.add( new CowBoy(nom,boissonF.name));
         
         //Création de 3 CowBoy
         //Fait dans classe cowboy
         
         //Début de la partie
         System.out.println("Début de la partie :");
+        sleep.main(1000); 
         
         //Création de la date de départ
         Time time = new Time(); //Création de la date de départ
         Date date=time.newTime();
         
         //La partie continue tant que le solde n'est pas négatif
-        while(solde>=0){
+        while(money.getMoney()>=0){
             
             //Affichage de la date
             time.displayTime(date);
             
             //Affichage du solde actuelle
-            System.out.println("Votre solde est de : " + solde);
+            money.displayMoney(money.getMoney());
         
             //Suite histoire
             System.out.println("Vous venez d'entrer dans un saloon");
+            sleep.main(1000); 
             System.out.println("et allez jusqu'au Barman pour commander une boisson.");
+            sleep.main(1000); 
             
             //Sert la boisson favorite au perso principal
-            Barman barman = Barman.BOB;
-            barman.sert(barman.GetName(),persoPrin.get(0).GetDrink(),persoPrin.get(0).GetName());
+            int drink_price = Barman.barman.introduction(boissonF, nom);
+            money.buyDrink(drink_price);
+            money.displayMoney(money.getMoney());
             
             //Position du personage principale avant que le brigand arrive
             Position.eventPosition(persoPrin.get(0).GetName());
             
             
-            solde-=5000;
             
             // Ajout de 1 jour à la date pour la prochaine partie
             date=time.addDay();
             
-        
-        game=false;
+            game=false;
         }
         System.out.println("Game Over");
         String nouvellePartie="";

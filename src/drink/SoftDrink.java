@@ -10,10 +10,10 @@ package drink;
  */
 public class SoftDrink extends Drink{
     
-    public static final SoftDrink Water= new SoftDrink("Water",25,0.0f);
-    public static final SoftDrink Coca= new SoftDrink("Coca",33,3.0f);
+    public static final SoftDrink Eau= new SoftDrink("Eau",25,5000);
+    public static final SoftDrink Coca= new SoftDrink("Coca",33,5000);
     
-    public SoftDrink(String name, int size, float price){
+    public SoftDrink(String name, int size, int price){
         super(name,size,price);
     }
     

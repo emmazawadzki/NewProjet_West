@@ -11,9 +11,9 @@ package drink;
 public class Drink {
     public String name;
     private int size;
-    private float price;
+    private int price;
     
-    public Drink(String name, int size, float price){
+    public Drink(String name, int size, int price){
         this.name=name;
         this.size=size;
         this.price=price;
@@ -27,7 +27,7 @@ public class Drink {
         return this.size;
     }
     
-    public float getPrice(){
+    public int getPrice(){
         return this.price;
     }
     

@@ -1,26 +1,27 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
 package drink;
 
+
+
 /**
- *
- * @author zawae
- */
+*
+* @author zawae
+*/
 public class AlcoholDrink extends Drink{
-    private int alcoholLevel;
+//    private int alcoholLevel;
     
-    public static final AlcoholDrink Beer= new AlcoholDrink("Beer",25,8.0f,10);
-    public static final AlcoholDrink Wine= new AlcoholDrink("Wine",25,8.0f,10);
-    public static final AlcoholDrink Whisky= new AlcoholDrink("Whisky",5,8.0f,10);
+    public static final AlcoholDrink Biere = new AlcoholDrink("Biere",25,5000);
+    public static final AlcoholDrink Vin = new AlcoholDrink("Vin",25,5000);
+    public static final AlcoholDrink Whisky = new AlcoholDrink("Whisky",5,5000);
     
-    public AlcoholDrink(String name, int size, float price, int alcoholLevel){
+    public AlcoholDrink(String name, int size, int price){
         super(name,size,price);
-        this.alcoholLevel=alcoholLevel;
     }
     
-    public int getAlcoholLevel(){
-        return this.alcoholLevel;
-    }
+//    public int getAlcoholLevel(){
+//        return this.alcoholLevel;
+//    }
 }

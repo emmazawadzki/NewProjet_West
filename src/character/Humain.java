@@ -8,7 +8,7 @@ package character;
  *
  * @author zawae
  */
-public class Humain {
+public abstract class Humain {
     private String name;
     private String boissonFavorite;
     
