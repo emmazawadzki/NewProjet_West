@@ -4,11 +4,16 @@
  */
 package projetwest;
 
+
 import java.util.Scanner;
+import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat; 
+
 import management.*;
+import character.*;
 
 /**
  *
@@ -23,7 +28,6 @@ public class ProjetWest {
         
         while(game==true){
         System.out.println("- - - - Nouvelle partie - - - -");
-        
         
         //Monnaie du jeu
         int solde=10000;
@@ -47,8 +51,8 @@ public class ProjetWest {
         boissonF=keyboard.nextLine();
         
         //Création personnage principale
-        CowBoy[] persoPrincipal=new CowBoy[1];
-        persoPrincipal[0]=new CowBoy(nom,boissonF);
+        ArrayList<CowBoy> persoPrin = new ArrayList <CowBoy>();
+        persoPrin.add( new CowBoy(nom,boissonF));
         
         //Création de 3 CowBoy
         //Fait dans classe cowboy
@@ -62,6 +66,7 @@ public class ProjetWest {
         
         //La partie continue tant que le solde n'est pas négatif
         while(solde>=0){
+            
             //Affichage de la date
             time.displayTime(date);
             
@@ -73,21 +78,27 @@ public class ProjetWest {
             System.out.println("et allez jusqu'au Barman pour commander une boisson.");
             
             //Sert la boisson favorite au perso principal
-            Barman barman = Barman.BARMAN;
-            barman.sert(barman.GetName(),persoPrincipal[0].GetDrink(),persoPrincipal[0].GetName());
+            Barman barman = Barman.BOB;
+            barman.sert(barman.GetName(),persoPrin.get(0).GetDrink(),persoPrin.get(0).GetName());
+            
+            //Position du personage principale avant que le brigand arrive
+            Position.eventPosition(persoPrin.get(0).GetName());
+            
             
             solde-=5000;
             
             // Ajout de 1 jour à la date pour la prochaine partie
             date=time.addDay();
+            
         
-        System.out.println("Game Over");
         game=false;
         }
+        System.out.println("Game Over");
         String nouvellePartie="";
         System.out.println("Do you want to play again (O/N):");
         nouvellePartie=keyboard.nextLine();
         System.out.println("Fin de la partie");
+        
         
         if(nouvellePartie.equals("O") || nouvellePartie.equals("o") ){
             game=true;
@@ -101,6 +112,6 @@ public class ProjetWest {
             game=false;
         }
         }
-        
     }
+    
  }
