@@ -103,16 +103,17 @@ public class ProjetWest {
             money.buyDrink(drink_price);
             money.displayMoney(money.getMoney());
             
-            //Position du personage principale avant que le brigand arrive
-            Position.eventPosition(persoPrin.get(0).GetName());
-            
-            
+            if(money.getMoney()>=0){
+                //Position du personage principale avant que le brigand arrive
+            PriseDOtage.eventPriseDOtage(persoPrin.get(0).GetName(),1);
+            }
             
             // Ajout de 1 jour à la date pour la prochaine partie
             date=time.addDay();
-            
-            game=false;
         }
+        
+        game=false;
+        
         System.out.println("Game Over");
         String nouvellePartie="";
         System.out.println("Do you want to play again (O/N):");
