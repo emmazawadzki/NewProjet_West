@@ -11,31 +11,27 @@ import java.util.ArrayList;
  * @author zawae
  */
 public class Brigand extends Humain{
-    private Boolean estEnPrison;
     private Boolean estMort;
     
-    public static Brigand ArrayListBrigand(int numList) {
-        ArrayList<Brigand> brigandList = new ArrayList <Brigand>();
-        brigandList.add( new Brigand("Joe",false,false));
-        brigandList.add( new Brigand("Averell",false,false));
-        brigandList.add( new Brigand("Jack",false,false));
-        brigandList.add( new Brigand("William",false,false));
-        brigandList.add( new Brigand("Rantanplan",false,false));
-        
+    public static Brigand ArrayListBrigand(ArrayList<Brigand> brigandList,int numList,boolean change) {
+        if(change==true){
+            brigandList.set(numList,new Brigand("Averell",true));
+        }
+    
         return brigandList.get(numList);
     }
     
-    public Brigand(String name){
-        super(name);
-    }
     
-    public Brigand(String name,Boolean estEnPrison, Boolean estMort){
+    public Brigand(String name, Boolean estMort){
         super(name);
-        this.estEnPrison=estEnPrison;
         this.estMort=estMort;
     }
     
     public void sePresenter(){
         quelEstTonNom();
+    }
+    
+    public Boolean GetEstMort(){
+        return this.estMort;
     }
 }

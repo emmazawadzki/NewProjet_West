@@ -13,9 +13,9 @@ package drink;
 public class AlcoholDrink extends Drink{
 //    private int alcoholLevel;
     
-    public static final AlcoholDrink Biere = new AlcoholDrink("Biere",25,5000);
-    public static final AlcoholDrink Vin = new AlcoholDrink("Vin",25,5000);
-    public static final AlcoholDrink Whisky = new AlcoholDrink("Whisky",5,5000);
+    public static final AlcoholDrink Biere = new AlcoholDrink("Biere",25,12);
+    public static final AlcoholDrink Vin = new AlcoholDrink("Vin",25,15);
+    public static final AlcoholDrink Whisky = new AlcoholDrink("Whisky",5,15);
     
     public AlcoholDrink(String name, int size, int price){
         super(name,size,price);

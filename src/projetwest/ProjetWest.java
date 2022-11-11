@@ -26,6 +26,7 @@ public class ProjetWest {
      */
     public static void main(String[] args) {
         boolean game=true;
+        boolean partieGagnee=false;
         
         while(game==true){
         //déclaration des classes    
@@ -33,7 +34,7 @@ public class ProjetWest {
         
         
         //initialisation du choix de la boisson
-        Drink boissonF = new Drink("",10,5000);
+        Drink boissonF = new Drink("",10,10);
 
     
             
@@ -60,7 +61,12 @@ public class ProjetWest {
         //Fait dans Barman
         
         //Création de 5 Brigands
-        //Fait dans classe Brigand
+        ArrayList<Brigand> brigandList = new ArrayList <Brigand>();
+        brigandList.add( new Brigand("Joe",false));
+        brigandList.add( new Brigand("Averell",false));
+        brigandList.add( new Brigand("Jack",false));
+        brigandList.add( new Brigand("William",false));
+        brigandList.add( new Brigand("Rantanplan",false));
         
         //Demander nom à l'utilisateur + Boisson Favorite
         System.out.println("Avant de commencer, quelle est votre nom :");
@@ -83,8 +89,10 @@ public class ProjetWest {
         Time time = new Time(); //Création de la date de départ
         Date date=time.newTime();
         
+        int i=0;
+        
         //La partie continue tant que le solde n'est pas négatif
-        while(money.getMoney()>=0){
+        while(money.getMoney()>=0 && i<5 && game==true){
             
             //Affichage de la date
             time.displayTime(date);
@@ -104,8 +112,18 @@ public class ProjetWest {
             money.displayMoney(money.getMoney());
             
             if(money.getMoney()>=0){
-                //Position du personage principale avant que le brigand arrive
-            PriseDOtage.eventPriseDOtage(persoPrin.get(0).GetName(),1);
+                if(i<5){
+                    //Position du personage principale avant que le brigand arrive
+                    game=PriseDOtage.eventPriseDOtage(brigandList,persoPrin.get(0).GetName(),i,money);
+                    if(Brigand.ArrayListBrigand(brigandList,i,false).GetEstMort()==true){
+                        i++;
+                    }
+                    if(i==4){
+                        partieGagnee=true;
+                    }
+                }
+                
+                
             }
             
             // Ajout de 1 jour à la date pour la prochaine partie
@@ -114,11 +132,20 @@ public class ProjetWest {
         
         game=false;
         
-        System.out.println("Game Over");
+        if (partieGagnee==false){
+            System.out.println("Game Over");
+        }
+        else{
+            System.out.println("Partie gagnée");
+        }
+        
         String nouvellePartie="";
+        
+        System.out.println("Fin de la partie");
+        
         System.out.println("Do you want to play again (O/N):");
         nouvellePartie=keyboard.nextLine();
-        System.out.println("Fin de la partie");
+        
         
         
         if(nouvellePartie.equals("O") || nouvellePartie.equals("o") ){

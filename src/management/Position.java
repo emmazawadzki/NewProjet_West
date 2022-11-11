@@ -59,8 +59,8 @@ public class Position {
                 try{
                 System.out.println("Où souhaitez-vous vous asseoir?");
                 System.out.println("      " + "Entrée         ?[1]");
-                System.out.println("      " + "Bar            ?[2]");
-                System.out.println("      " + "Table centrale ?[3]");
+                System.out.println("      " + "Table centrale ?[2]");
+                System.out.println("      " + "Bar            ?[3]");
                 choix_Pos = keyboard.nextInt();
                 } catch(NumberFormatException e){
                     System.out.println("Erreur vous ne pouvez pas aller là...");
@@ -72,12 +72,12 @@ public class Position {
                     System.out.println("Vous partez vous installez à une table près de l'entrée");
                     break;
                 case 2 :
-                    position="au bar";
-                    System.out.println("Vous choisissez une chaise pour vous installez au bar");
-                    break;
-                case 3 :
                     position="entre l'entrée et le bar";
                     System.out.println("Vous partez vous installez à une table située au centre du saloon");
+                    break;
+                case 3 :
+                    position="au bar";
+                    System.out.println("Vous choisissez une chaise pour vous installez au bar");
                     break;
             }
             
