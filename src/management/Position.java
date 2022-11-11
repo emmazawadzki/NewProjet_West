@@ -62,7 +62,8 @@ public class Position {
                 System.out.println("      " + "Table centrale ?[2]");
                 System.out.println("      " + "Bar            ?[3]");
                 choix_Pos = keyboard.nextInt();
-                } catch(NumberFormatException e){
+                }
+                catch(NumberFormatException e){
                     System.out.println("Erreur vous ne pouvez pas aller là...");
                 }  
             }

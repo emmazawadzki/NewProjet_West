@@ -15,7 +15,9 @@ public class Brigand extends Humain{
     
     public static Brigand ArrayListBrigand(ArrayList<Brigand> brigandList,int numList,boolean change) {
         if(change==true){
-            brigandList.set(numList,new Brigand("Averell",true));
+            Brigand brigand=brigandList.get(numList);
+            String nomBrigand=brigand.GetName();
+            brigandList.set(numList,new Brigand(nomBrigand,true));
         }
     
         return brigandList.get(numList);
