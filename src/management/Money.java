@@ -25,6 +25,11 @@ public class Money {
     public int buyDrink(int cost){
         return this.money = (this.money-cost);      
     }
+    
+    public int payRançon(int rançon){
+        return this.money = (this.money-rançon);      
+    }
+    
       
      
     

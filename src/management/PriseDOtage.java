@@ -109,7 +109,7 @@ public class PriseDOtage {
                     break;
                     
                 case 2 :
-                    money.buyDrink(2000);
+                    money.payRançon(2000);
                     System.out.println("Tu n'est pas intervenu");
                     game=true;
                     break;
