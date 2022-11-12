@@ -20,7 +20,7 @@ import java.lang.NumberFormatException;
 public class Barman extends Humain{
     
     public static final Barman barman = new Barman("Bob");
-    
+    Sleep sleep = new Sleep();
     
     public Barman(String name){
         super(name);
@@ -31,7 +31,7 @@ public class Barman extends Humain{
     }
     
     public void serveDrink(String name,String choix_boisson, String nomPersoP){
-        System.out.println(name +": Voici votre " + choix_boisson + " " + nomPersoP);
+        System.out.println(name +" : Voici votre " + choix_boisson + " " + nomPersoP);
     }
     
 //    public void serveDrink(String name,String boissonFavoriteP, String nameP){
@@ -50,15 +50,18 @@ public class Barman extends Humain{
             while((choix_type_boisson != 1)  && (choix_type_boisson != 2) && (choix_type_boisson != 3)){
                 try{
             System.out.println("Bonjour ! Que puis-je vous servir ?");
+            sleep.main(1000);
             System.out.println("      "+"Boisson alcolisee  ? [1]");
             System.out.println("      "+"Boisson soft       ? [2]");
             System.out.println("      "+"Boisson favorite   ? [3]");  
             choix_type_boisson = Integer.parseInt(keyboard.nextLine());
             if ((choix_type_boisson != 1 ) && (choix_type_boisson != 2) && (choix_type_boisson != 3)){
-            System.out.println("Nous n'avons pas ça en stock désolé...");
+                sleep.main(1000);
+                System.out.println("Nous n'avons pas ça en stock désolé...");
             }
             } catch(NumberFormatException e){
-            System.out.println("Nous n'avons pas ça en stock désolé...");
+                sleep.main(1000);            
+                System.out.println("Nous n'avons pas ça en stock désolé...");
             }
             }
             
@@ -67,14 +70,17 @@ public class Barman extends Humain{
                     while((c_boisson != 1 ) && (c_boisson != 2) && (c_boisson != 3)){
                     try{
                     System.out.println("Quel alcool voulez-vous ?");
+                    sleep.main(1000);
                     System.out.println("      "+"Biere  ? [1]");
                     System.out.println("      "+"Vin    ? [2]");
                     System.out.println("      "+"Whisky ? [3]");
                     c_boisson = Integer.parseInt(keyboard.nextLine());
                     if ((c_boisson != 1 ) && (c_boisson != 2) && (c_boisson != 3)){
+                        sleep.main(1000);
                         System.out.println("Nous n'avons pas ça en stock désolé...");
                     }
                     } catch(NumberFormatException e){
+                        sleep.main(1000);
                         System.out.println("Nous n'avons pas ça en stock désolé...");
                     }
         }
@@ -98,13 +104,16 @@ public class Barman extends Humain{
                     while((c_boisson != 1 ) && (c_boisson != 2)){
                         try{
                             System.out.println("Quel soft voulez-vous ?");
+                            sleep.main(1000);
                             System.out.println("      "+"Eau  ?      [1]");
                             System.out.println("      "+"Coca-Cola ? [2]");
                             c_boisson = Integer.parseInt(keyboard.nextLine());
                             if ((c_boisson != 1 ) && (c_boisson != 2)){
-                        System.out.println("Nous n'avons pas ça en stock désolé...");
+                                sleep.main(1000);                      
+                                System.out.println("Nous n'avons pas ça en stock désolé...");
                         }
                         } catch(NumberFormatException e){
+                        sleep.main(1000);
                         System.out.println("Nous n'avons pas ça en stock désolé...");
                     }
                     

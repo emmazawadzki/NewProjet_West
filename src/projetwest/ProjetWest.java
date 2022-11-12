@@ -20,6 +20,7 @@ import drink.*;
  *
  * @author zawae
  */
+///
 public class ProjetWest {
     /**
      * @param args the command line arguments
@@ -49,6 +50,8 @@ public class ProjetWest {
         
         Sleep sleep = new Sleep();
         
+        Armurerie armurerie = new Armurerie();
+        
         
         System.out.println("- - - - Nouvelle partie - - - -");
         
@@ -75,9 +78,9 @@ public class ProjetWest {
         boissonF.name = keyboard.nextLine();
         
         //Création personnage principale
-        ArrayList<CowBoy> persoPrin = new ArrayList <CowBoy>();
-        persoPrin.add( new CowBoy(nom,boissonF.name));
-        
+        ArrayList<CowBoy> persoPrin = new ArrayList<CowBoy>();
+        persoPrin.add( new CowBoy(nom,boissonF.name,5));
+                
         //Création de 3 CowBoy
         //Fait dans classe cowboy
         
@@ -114,16 +117,53 @@ public class ProjetWest {
             if(money.getMoney()>=0){
                 if(i<5){
                     //Position du personage principale avant que le brigand arrive
-                    game=PriseDOtage.eventPriseDOtage(brigandList,persoPrin.get(0).GetName(),i,money);
+                    game=PriseDOtage.eventPriseDOtage(brigandList,persoPrin.get(0).GetName(),i,money,persoPrin);
                     if(Brigand.ArrayListBrigand(brigandList,i,false).GetEstMort()==true){
                         i++;
                     }
                     if(i==4){
                         partieGagnee=true;
                     }
+                }   
+            }
+            
+            if(game==true){
+            if(persoPrin.get(0).nb_balles == 0){//0 balles, il faut passer à l'armurerie
+                sleep.main(1000);
+                System.out.println("< Vous n'avez-plus de munitions, rendez-vous à l'armurerie... >");
+                armurerie.acheterMunitions(persoPrin, money);
+            }
+            
+            else if (persoPrin.get(0).nb_balles > 0){//Voulez-vous aller à l'armurerie ?
+                String answer ="";
+                while((answer.equals("O") != true) && (answer.equals("o") != true)&& (answer.equals("N") != true)&& (answer.equals("n") != true)){
+                    sleep.main(1000);
+                    System.out.println("< Voulez-vous passez à l'armurerie faire le plein de munitions ? (O/N): >");  
+                    answer=keyboard.nextLine();
+                    if(answer.equals("O") || answer.equals("o") ){
+                        armurerie.acheterMunitions(persoPrin, money);
+                    }
+                    else if(answer.equals("N") || answer.equals("n")){
+                        break ;
+                    }
+                    else{
+                        //A Modifier
+                        System.out.println("Erreur...");
+                        break ;
+                    } 
                 }
-                
-                
+            }
+            }
+            if(money.getMoney()<=0){
+                System.out.println("Vous êtes ruiné malheuresement...");
+            }
+            
+            
+            if(i==0){
+                System.out.println("BRAVO !!!");
+                sleep.main(1000);
+                System.out.println("Vous avez tué tous les brigands !");
+                partieGagnee = true;
             }
             
             // Ajout de 1 jour à la date pour la prochaine partie

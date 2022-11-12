@@ -9,12 +9,14 @@ package character;
  * @author zawae
  */
 public abstract class Humain {
-    private String name;
-    private String boissonFavorite;
+    public String name;
+    public String boissonFavorite;
+    public Integer nb_balles;
     
-    public Humain(String name,String boissonFavorite){
+    public Humain(String name,String boissonFavorite,Integer nb_balles){
         this.name=name;
         this.boissonFavorite=boissonFavorite;
+        this.nb_balles = nb_balles;
     }
     
     public Humain(String name){
