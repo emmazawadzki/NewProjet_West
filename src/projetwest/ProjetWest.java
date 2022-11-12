@@ -159,7 +159,7 @@ public class ProjetWest {
             }
             
             
-            if(i==0){
+            if(i==5){
                 System.out.println("BRAVO !!!");
                 sleep.main(1000);
                 System.out.println("Vous avez tué tous les brigands !");

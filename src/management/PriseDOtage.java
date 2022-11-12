@@ -29,25 +29,25 @@ public class PriseDOtage {
             //Situation 1: près de l'entrée
             case 1 :
                 System.out.println("Vous êtes situé derrière "+brigandName);
-                game=SituationPourcentage(brigandList,brigandName,numListBrigand,95,90,99,99,money,cowboyList);
+                game=SituationPourcentage(brigandList,nomPersoPrincipal,brigandName,numListBrigand,95,90,99,99,money,cowboyList);
                 break;
                 
             //Situation 2: entre l'entrée et le bar
             case 2 :
                 System.out.println("Vous êtes situé à côté de "+brigandName);
-                game=SituationPourcentage(brigandList,brigandName,numListBrigand,75,70,85,85,money,cowboyList);
+                game=SituationPourcentage(brigandList,nomPersoPrincipal,brigandName,numListBrigand,75,70,85,85,money,cowboyList);
                 break;
             
             //Situation 3: au bar
             case 3 :
                 System.out.println("Vous êtes situé devant "+brigandName);
-                game=SituationPourcentage(brigandList,brigandName,numListBrigand,20,20,30,30, money,cowboyList);
+                game=SituationPourcentage(brigandList,nomPersoPrincipal,brigandName,numListBrigand,20,20,30,30, money,cowboyList);
                 break;
         }
         return game;
     }
     
-    public static boolean SituationPourcentage(ArrayList<Brigand> brigandList,String brigandName,int numListBrigand, int pourcentage1,int pourcentage2,int pourcentage3,int pourcentage4,Money money, ArrayList<CowBoy> cowboyList){
+    public static boolean SituationPourcentage(ArrayList<Brigand> brigandList,String nomPersoPrincipal,String brigandName,int numListBrigand, int pourcentage1,int pourcentage2,int pourcentage3,int pourcentage4,Money money, ArrayList<CowBoy> cowboyList){
         boolean game=true;
         Random random = new Random();
         int situation = random.nextInt(4);
@@ -59,7 +59,7 @@ public class PriseDOtage {
                 //Le brigand est agité et son arme pointe vers la foule
                 AgiteFoule(brigandName);
                 //Choix : Intervenir ou pas
-                game=ChoixIntervention(brigandList,pourcentage1, numListBrigand,money,cowboyList);
+                game=ChoixIntervention(brigandList,nomPersoPrincipal,pourcentage1, numListBrigand,money,cowboyList);
                 break;
                 
             //Situation 2:
@@ -67,7 +67,7 @@ public class PriseDOtage {
                 //Le brigand est agité et son arme pointe vers la femme
                 AgiteFemme(brigandName);
                 //Choix : Intervenir ou pas
-                game=ChoixIntervention(brigandList,pourcentage2, numListBrigand,money,cowboyList);
+                game=ChoixIntervention(brigandList,nomPersoPrincipal,pourcentage2, numListBrigand,money,cowboyList);
                 break;
             
             //Situation 3:
@@ -75,7 +75,7 @@ public class PriseDOtage {
                 //Le brigand est calme et son arme pointe vers la femme
                 CalmeFemme(brigandName);
                 //Choix : Intervenir ou pas
-                game=ChoixIntervention(brigandList,pourcentage3, numListBrigand, money,cowboyList);
+                game=ChoixIntervention(brigandList,nomPersoPrincipal,pourcentage3, numListBrigand, money,cowboyList);
                 break;
             
             //Situation 4:
@@ -83,13 +83,13 @@ public class PriseDOtage {
                 //Le brigand est calme et son arme pointe vers la foule
                 CalmeFoule(brigandName);
                 //Choix : Intervenir ou pas
-                game=ChoixIntervention(brigandList,pourcentage4, numListBrigand, money,cowboyList);
+                game=ChoixIntervention(brigandList,nomPersoPrincipal,pourcentage4, numListBrigand, money,cowboyList);
                 break;  
         }
         return game;
     }
     
-    public static boolean ChoixIntervention(ArrayList<Brigand> brigandList,int pourcentageIntervention,int numListBrigand,Money money,ArrayList<CowBoy> cowboyList){
+    public static boolean ChoixIntervention(ArrayList<Brigand> brigandList,String nomPersoPrincipal,int pourcentageIntervention,int numListBrigand,Money money,ArrayList<CowBoy> cowboyList){
         boolean game=true;
         Scanner keyboard=new Scanner (System.in);
         int choix_Intervention =0;
@@ -113,7 +113,7 @@ public class PriseDOtage {
                     pourcentageIntervention_tmp = pourcentageIntervention_tmp/100;
                     //calcul proba en fonction du nombre de balles tirées                    
                     pourcentageIntervention = PriseDOtage.calc_pourcentage_balles(choix_nb_balles, pourcentageIntervention_tmp); 
-                    game=Intervention(brigandList,pourcentageIntervention,numListBrigand,cowboyList,choix_nb_balles);
+                    game=Intervention(brigandList,nomPersoPrincipal,pourcentageIntervention,numListBrigand,money,cowboyList,choix_nb_balles);
                     break;
                     
                 case 2 :
@@ -151,30 +151,70 @@ public class PriseDOtage {
             return choix_nb_balles;
 }
     
-    public static boolean Intervention(ArrayList<Brigand> brigandList,int pourcentageIntervention,int numListBrigand, ArrayList<CowBoy> cowboyList,int choix_nb_balles){
+    public static boolean Intervention(ArrayList<Brigand> brigandList,String nomPersoPrincipal,int pourcentageIntervention,int numListBrigand, Money money,ArrayList<CowBoy> cowboyList,int choix_nb_balles){
         boolean game=true;
         Random random = new Random();
         int pourcentage = random.nextInt(100);
          
         if (pourcentage < pourcentageIntervention){
-            cowboyList.get(0).tirer(choix_nb_balles, brigandList.get(0), cowboyList.get(0));
-            Brigand.ArrayListBrigand(brigandList,numListBrigand,true);
-            System.out.println("Vous avez tué le brigand");
-            game=true;
+            int situation=random.nextInt(5);
+            switch(situation){
+                //Situation 1: Le brigand est tué
+                case 0,1,2 :
+                    cowboyList.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), cowboyList.get(0));
+                    Brigand.ArrayListBrigand(brigandList,numListBrigand,true);
+                    System.out.println("Vous avez tué le brigand");
+                    game=true;
+                    break;
+                //Situation 2: Game over, vous êtes mort
+                case 3 :    
+                    System.out.println(brigandList.get(numListBrigand).name + ": MOUHAHAHA ! Tu es à ma merci, prends-ça...");
+                    int nb_balles = random.nextInt(3);
+                    if(brigandList.get(numListBrigand).etat_arme(nb_balles) == false){
+                        System.out.println(brigandList.get(numListBrigand).name + ": Zut ! Plus de munitions...");
+                        game = true;
+                        
+                    } 
+                    else{
+                        brigandList.get(0).tirer((nb_balles+1), brigandList.get(numListBrigand), cowboyList.get(0));
+                        System.out.println("Vous avez perdu");
+                        game=false;
+                        
+                    }
+                    break;
+                //Situation 3: Le brigand prend la fuite
+                case 4 :
+                    cowboyList.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), cowboyList.get(0));
+                    System.out.println(brigandList.get(numListBrigand).name+" a réussi à s'échapperé");
+                    System.out.println(nomPersoPrincipal+" : Mince, il est chanceux celui là");
+                    System.out.println(nomPersoPrincipal+" : Mais au moins, il est parti les mains vide");
+                    break;
+                //Situation 4: Le brigand part avec la femme
+                //Si pas mis enlever money dans la classe intervention
+//                case 5 :
+//                    cowboyList.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), cowboyList.get(0));
+//                    System.out.println(brigandList.get(numListBrigand).name+" a réussi à s'échapperé");
+//                    System.out.println(nomPersoPrincipal+" : Mince, il est chanceux celui là");
+//                    System.out.println(nomPersoPrincipal+" : Mais il a pris l'otage");
+//                    System.out.println(nomPersoPrincipal+" : Je vais devoir la libérer");
+//                    money.payRançon(2000);
+//                    game=true;
+//                    break;
+                
+            }
+            
         }
         else{//pourcentage > pourcentageIntervention // Partie perdu ?
-            System.out.println(brigandList.get(0).name + ": MOUHAHAHA ! Tu es à ma merci, prends-ça...");
+            System.out.println(brigandList.get(numListBrigand).name + ": MOUHAHAHA ! Tu es à ma merci, prends-ça...");
             int nb_balles = random.nextInt(3);
             if(brigandList.get(0).etat_arme(nb_balles) == false){
-                System.out.println(brigandList.get(0).name + ": Zut ! Plus de munitions...");
-                game = true;
-                return game;
+                System.out.println(brigandList.get(numListBrigand).name + ": Zut ! Plus de munitions...");
+                game = true;                
             } 
             else{
-                brigandList.get(0).tirer((nb_balles+1), brigandList.get(0), cowboyList.get(0));
+                brigandList.get(0).tirer((nb_balles+1), brigandList.get(numListBrigand), cowboyList.get(0));
                 System.out.println("Vous avez perdu");
                 game=false;
-                return game;
             }
         }
         return game;
