@@ -15,8 +15,7 @@ public class Sleep {
     try {
             for (int i = 0; i < 1*(time/1000); i++) {
                
-                // it will sleep the main thread for 1 sec
-                // ,each time the for loop runs
+                // cela va faire attendre le main 1 seconde
                 java.lang.Thread.sleep(time);
                
                 // printing the value of the variable
@@ -24,7 +23,7 @@ public class Sleep {
         }
         catch (Exception e) {
            
-            // catching the exception
+            // catch l'exception
             System.out.println(e);
         }
     

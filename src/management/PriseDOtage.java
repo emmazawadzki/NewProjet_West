@@ -260,7 +260,7 @@ public class PriseDOtage {
         return game;
     }
     
-    /**Fonction qui permet de calculer le pourcentage en fonction du nombre de balle choisi
+    /**Fonction qui permet de calculer le pourcentage en fonction du nombre de balle choisi par l'utilisateur
      * 
      * @param choix_nb_balles permet de récupérer le choix du nombre de balle que l'utilisateur a choisi
      * @param pourcentage 

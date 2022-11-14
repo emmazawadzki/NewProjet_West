@@ -16,6 +16,11 @@ import java.util.Scanner;
 public class Position {
     public static String position;
     
+    /**
+     * 
+     * @param nomPersoPrincipal permet de récupérer le nom de l'utilisateur
+     * @return la position de l'utilisateur dans le saloon
+     */
     public static int evenementPosition(String nomPersoPrincipal){
         Random random = new Random();
         int randomCowBoy = random.nextInt(3);
