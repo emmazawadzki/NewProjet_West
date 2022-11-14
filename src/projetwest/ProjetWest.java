@@ -94,6 +94,7 @@ public class ProjetWest {
         //Création de la date de départ
         Time time = new Time(); //Création de la date de départ
         Date date=time.newTime();
+        int nbDeJour=0;
         
         int i=0;
         
@@ -131,13 +132,13 @@ public class ProjetWest {
             }
             
             if(game==true){
-            if(persoPrin.get(0).nb_balles == 0){//0 balles, il faut passer à l'armurerie
+            if(persoPrin.get(0).nb_balles == 0 && money.getMoney()>=0){//0 balles, il faut passer à l'armurerie
                 sleep.main(1000);
                 System.out.println("< Vous n'avez-plus de munitions, rendez-vous à l'armurerie... >");
                 armurerie.acheterMunitions(persoPrin, money);
             }
             
-            else if (persoPrin.get(0).nb_balles > 0){//Voulez-vous aller à l'armurerie ?
+            else if (persoPrin.get(0).nb_balles > 0 && game==true && money.getMoney()>=0){//Voulez-vous aller à l'armurerie ?
                 String answer ="";
                 while((answer.equals("O") != true) && (answer.equals("o") != true)&& (answer.equals("N") != true)&& (answer.equals("n") != true)){
                     sleep.main(1000);
@@ -162,28 +163,29 @@ public class ProjetWest {
             
             
             if(i==5){
-                System.out.println("< BRAVO !!! >");
-                sleep.main(1000);
-                System.out.println("< Vous avez tué tous les brigands ! >");
                 partieGagnee = true;
             }
             
             // Ajout de 1 jour à la date pour la prochaine partie
             date=time.addDay();
+            nbDeJour+=1;
+            
         }
         
         game=false;
         
         if (partieGagnee==false){
-            System.out.println("< Game Over >");
+            System.out.println("< Vous avez perdu >");
         }
         else{
-            System.out.println("< Partie gagnée >");
+            System.out.println("< Bravo !!! >");
+            sleep.main(1000);
+            System.out.println("< Vous avez tué les 5 brigands en "+nbDeJour+" jours>");
         }
         
         String nouvellePartie="";
         
-        System.out.println("Fin de la partie");
+        System.out.println("- - - - Fin de la partie - - - -");
         
         System.out.println("< Voulez-vous rejouez (O/N): >");
         nouvellePartie=keyboard.nextLine();

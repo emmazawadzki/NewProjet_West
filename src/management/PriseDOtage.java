@@ -238,17 +238,17 @@ public class PriseDOtage {
         int pourcentage = random.nextInt(100);
          
         if (pourcentage < pourcentageIntervention){
-            int situation=random.nextInt(2);
+            int situation=random.nextInt(4);
             switch(situation){
                 //Situation 1: Le brigand est tué
-                case 0 :
+                case 0,1,2 :
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
                     Brigand.ArrayListBrigand(brigandList,numListBrigand,true);
                     System.out.println("< Vous avez tué le brigand >");
                     game=true;
                     break;
                 //Situation 2: Le brigand s'enfuit
-                case 1 :    
+                case 3 :    
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
                     System.out.println("< "+brigandList.get(numListBrigand).name+" a réussi à s'échapperé >");
                     sleep.main(1000);
@@ -270,7 +270,7 @@ public class PriseDOtage {
             } 
             else{
                 brigandList.get(0).tirer((nb_balles+1), brigandList.get(numListBrigand), persoPrincipal.get(0));
-                System.out.println("< Vous avez perdu >");
+                //Message de game over dans ProjetWest
                 game=false;
             }
         }
