@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @author zawae
  */
 public class PriseDOtage {
+    
     /**En fonction de la position actuelle de l'utilisateur récupéré dans la classe Position,
      * 3 situations peuvent se produire, l'utilisateur peut se trouver : 
      *   derrière le brigand s'il est près de l'entrée;
@@ -28,6 +29,7 @@ public class PriseDOtage {
      */
     public static boolean evenementPriseDOtage(ArrayList<Brigand> brigandList, ArrayList<CowBoy> persoPrincipal, int numListBrigand, Money money){
         boolean game=true;
+        Sleep sleep = new Sleep();
         
         //Récupération de la position de l'utilisateur
         int position=Position.evenementPosition(persoPrincipal.get(0).GetName());
@@ -36,26 +38,31 @@ public class PriseDOtage {
         Brigand brigand = Brigand.ArrayListBrigand(brigandList,numListBrigand,false);
         String nomBrigand=brigand.GetName();
         
-        System.out.println("Soudain " + nomBrigand + " surgit et s’approche d’une femme pour la prendre en otage");
-        System.out.println(nomBrigand + " : Cette femme retrouvera la liberté lorsque j’aurais reçu 2 000 dollars");
-
+        System.out.println("< Soudain " + nomBrigand + " surgit et s’approche d’une femme pour la prendre en otage >");
+        sleep.main(1000);
+        System.out.println("< "+nomBrigand + " : Cette femme retrouvera la liberté lorsque j’aurais reçu 2 000 dollars >");
+        sleep.main(1000);
+        
         //Situation en fonction de la position du personnage principal
         switch(position){
             //Situation 1: près de l'entrée
             case 1 :
-                System.out.println("Vous êtes situé derrière "+nomBrigand);
+                System.out.println("< Vous êtes situé derrière "+nomBrigand+" >");
+                sleep.main(1000);
                 game=situationPourcentageReussite(brigandList,persoPrincipal,numListBrigand,95,90,99,99,money);
                 break;
                 
             //Situation 2: entre l'entrée et le bar
             case 2 :
-                System.out.println("Vous êtes situé à côté de "+nomBrigand);
+                System.out.println("< Vous êtes situé à côté de "+nomBrigand+" >");
+                sleep.main(1000);
                 game=situationPourcentageReussite(brigandList,persoPrincipal,numListBrigand,75,70,85,85,money);
                 break;
             
             //Situation 3: au bar
             case 3 :
-                System.out.println("Vous êtes situé devant "+nomBrigand);
+                System.out.println("< Vous êtes situé devant "+nomBrigand+" >");
+                sleep.main(1000);
                 game=situationPourcentageReussite(brigandList,persoPrincipal,numListBrigand,20,20,30,30, money);
                 break;
         }
@@ -136,13 +143,15 @@ public class PriseDOtage {
      */
     public static boolean choixIntervention(ArrayList<Brigand> brigandList,ArrayList<CowBoy> persoPrincipal,int numListBrigand,int pourcentageIntervention,Money money){
         boolean game=true;
+        Sleep sleep = new Sleep();
         
         Scanner keyboard=new Scanner (System.in);
         int choix_Intervention =0;
         
         while ((choix_Intervention != 1)&& (choix_Intervention != 2) && (choix_Intervention != 3)) {
             try{
-                System.out.println("Souhaitez-vous intervenir ou payer?");
+                System.out.println("< Souhaitez-vous intervenir ou payer? >");
+                sleep.main(1000);
                 System.out.println("      " + "Intervenir ?[1]");
                 System.out.println("      " + "Payer ?     [2]");
                 choix_Intervention = Integer.parseInt(keyboard.nextLine());
@@ -165,7 +174,7 @@ public class PriseDOtage {
                     break;
                     
                 case 2 :
-                    System.out.println("Tu n'est pas intervenu");
+                    System.out.println("< Vous n'etes pas intervenu >");
                     money.payRançon(2000);
                     game=true;
                     break;
@@ -180,11 +189,14 @@ public class PriseDOtage {
      * @return permet de retourner le nombre de balle choisi par l'utilisateur
      */
     public static int choixNbBalles(ArrayList<CowBoy> persoPrincipal){
+        Sleep sleep = new Sleep();
+        
         Scanner keyboard=new Scanner (System.in);
         int choix_nb_balles=0;
         while((choix_nb_balles == 0) || (choix_nb_balles > persoPrincipal.get(0).nb_balles) || (persoPrincipal.get(0).nb_balles<=0)){
             try{
-                System.out.println("Combien de balles souhaites-tu utiliser ? IL TE RESTE "+ persoPrincipal.get(0).nb_balles +" BALLES" );
+                System.out.println("< Combien de balles souhaites-tu utiliser ? IL TE RESTE "+ persoPrincipal.get(0).nb_balles +" BALLES >" );
+                sleep.main(1000);
                 System.out.println("      "+"1 ?[1]" );
                 System.out.println("      "+"2 ?[2]" );
                 System.out.println("      "+"3 ?[3]" );
@@ -220,6 +232,8 @@ public class PriseDOtage {
      */
     public static boolean intervention(ArrayList<Brigand> brigandList,ArrayList<CowBoy> persoPrincipal,int numListBrigand,int pourcentageIntervention, Money money,int choix_nb_balles){
         boolean game=true;
+        Sleep sleep = new Sleep();
+        
         Random random = new Random();
         int pourcentage = random.nextInt(100);
          
@@ -230,30 +244,33 @@ public class PriseDOtage {
                 case 0 :
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
                     Brigand.ArrayListBrigand(brigandList,numListBrigand,true);
-                    System.out.println("Vous avez tué le brigand");
+                    System.out.println("< Vous avez tué le brigand >");
                     game=true;
                     break;
                 //Situation 2: Le brigand s'enfuit
                 case 1 :    
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
-                    System.out.println(brigandList.get(numListBrigand).name+" a réussi à s'échapperé");
-                    System.out.println(persoPrincipal.get(0).GetName()+" : Mince, il est chanceux celui là");
-                    System.out.println(persoPrincipal.get(0).GetName()+" : Mais au moins, il est parti les mains vide");
+                    System.out.println("< "+brigandList.get(numListBrigand).name+" a réussi à s'échapperé >");
+                    sleep.main(1000);
+                    System.out.println("< "+persoPrincipal.get(0).GetName()+" : Mince, il est chanceux celui là >");
+                    sleep.main(1000);
+                    System.out.println("< "+persoPrincipal.get(0).GetName()+" : Mais au moins, il est parti les mains vide >");
                     break;
                 
             }
             
         }
         else{//pourcentage > pourcentageIntervention // Partie perdu ?
-            System.out.println(brigandList.get(numListBrigand).name + ": MOUHAHAHA ! Tu es à ma merci, prends-ça...");
+            System.out.println("< "+brigandList.get(numListBrigand).name + ": MOUHAHAHA ! Tu es à ma merci, prends-ça... >");
+            sleep.main(1000);
             int nb_balles = random.nextInt(3);
             if(brigandList.get(0).etat_arme(nb_balles) == false){
-                System.out.println(brigandList.get(numListBrigand).name + ": Zut ! Plus de munitions...");
+                System.out.println("< "+brigandList.get(numListBrigand).name + ": Zut ! Plus de munitions... >");
                 game = true;                
             } 
             else{
                 brigandList.get(0).tirer((nb_balles+1), brigandList.get(numListBrigand), persoPrincipal.get(0));
-                System.out.println("Vous avez perdu");
+                System.out.println("< Vous avez perdu >");
                 game=false;
             }
         }
@@ -281,21 +298,21 @@ public class PriseDOtage {
     }
     
     public static void agiteFoule(String brigandName){
-       System.out.println(brigandName + " est agité");
-       System.out.println("Son arme pointe vers la foule");
+       System.out.println("< "+brigandName + " est agité >");
+       System.out.println("< Son arme pointe vers la foule >");
     }
     
     public static void agiteFemme(String brigandName){
-        System.out.println(brigandName + " est agité");
-        System.out.println("Son arme pointe vers la femme");
+        System.out.println("< "+brigandName + " est agité >");
+        System.out.println("< Son arme pointe vers la femme >");
     }
     public static void calmeFemme(String brigandName){
-        System.out.println(brigandName + " est calme");
-        System.out.println("Son arme pointe vers la femme");
+        System.out.println("< "+brigandName + " est calme >");
+        System.out.println("< Son arme pointe vers la femme >");
     }
     
     public static void calmeFoule(String brigandName){
-        System.out.println(brigandName + " est calme");
-        System.out.println("Son arme pointe vers la foule");
+        System.out.println("< "+brigandName + " est calme >");
+        System.out.println("< Son arme pointe vers la foule >");
     }
 }

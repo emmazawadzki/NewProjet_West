@@ -28,7 +28,7 @@ public class Time {
     public void displayTime(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
         String stringDate= format.format(date); 
-        System.out.println("Aujourd'hui, nous sommes le " + stringDate);
+        System.out.println("< Aujourd'hui, nous sommes le " + stringDate + " >");
     }
     
 }

@@ -19,7 +19,7 @@ public class Money {
     }
     
     public void displayMoney(int money){
-        System.out.println("Votre solde est de : " + money);
+        System.out.println("< Votre solde est de : " + money + " € >");
     }
     
     public int buyDrink(int cost){

@@ -35,10 +35,10 @@ public class CowBoy extends Humain implements Arme{
     
     @Override
     public void tirer(int choix_nb_balles, Brigand brigand, CowBoy cowboy){//plus le nb de balle choisi est élévé plus chance de toucher la cible *1.2^nb_balles
-        System.out.println(cowboy.name + ": Prends-ça saleté...");
+        System.out.println("< "+cowboy.name + ": Prends-ça saleté... >");
         for (int i =0; i<choix_nb_balles;i++ ){
             sleep.main(1000);
-            System.out.println("PAN !");
+            System.out.println("< PAN ! >");
         }
         sleep.main(1000);
     } 

@@ -107,9 +107,9 @@ public class ProjetWest {
             money.displayMoney(money.getMoney());
         
             //Suite histoire
-            System.out.println("Vous venez d'entrer dans un saloon");
+            System.out.println("< Vous venez d'entrer dans un saloon >");
             sleep.main(1000); 
-            System.out.println("et allez jusqu'au Barman pour commander une boisson.");
+            System.out.println("< et allez jusqu'au Barman pour commander une boisson. >");
             sleep.main(1000); 
             
             //Sert la boisson favorite au perso principal
@@ -157,14 +157,14 @@ public class ProjetWest {
             }
             }
             if(money.getMoney()<=0){
-                System.out.println("Vous êtes ruiné malheuresement...");
+                System.out.println("< Vous êtes ruiné malheuresement...> ");
             }
             
             
             if(i==5){
-                System.out.println("BRAVO !!!");
+                System.out.println("< BRAVO !!! >");
                 sleep.main(1000);
-                System.out.println("Vous avez tué tous les brigands !");
+                System.out.println("< Vous avez tué tous les brigands ! >");
                 partieGagnee = true;
             }
             
@@ -175,17 +175,17 @@ public class ProjetWest {
         game=false;
         
         if (partieGagnee==false){
-            System.out.println("Game Over");
+            System.out.println("< Game Over >");
         }
         else{
-            System.out.println("Partie gagnée");
+            System.out.println("< Partie gagnée >");
         }
         
         String nouvellePartie="";
         
         System.out.println("Fin de la partie");
         
-        System.out.println("Do you want to play again (O/N):");
+        System.out.println("< Voulez-vous rejouez (O/N): >");
         nouvellePartie=keyboard.nextLine();
         
         
