@@ -26,7 +26,10 @@ public class ProjetWest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //La variable game correspond à l'état de la partie
+        //Si game=true, la partie est toujours en cours sinon, la partie est fini
         boolean game=true;
+        
         boolean partieGagnee=false;
         
         while(game==true){
@@ -117,7 +120,7 @@ public class ProjetWest {
             if(money.getMoney()>=0){
                 if(i<5){
                     //Position du personage principale avant que le brigand arrive
-                    game=PriseDOtage.eventPriseDOtage(brigandList,persoPrin,i,money);
+                    game=PriseDOtage.evenementPriseDOtage(brigandList,persoPrin,i,money);
                     if(Brigand.ArrayListBrigand(brigandList,i,false).GetEstMort()==true){
                         i++;
                     }
@@ -149,7 +152,6 @@ public class ProjetWest {
                     else{
                         //A Modifier
                         System.out.println("Erreur...");
-                        break ;
                     } 
                 }
             }

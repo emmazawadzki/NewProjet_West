@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Position {
     public static String position;
     
-    public static int eventPosition(String nomPersoPrincipal){
+    public static int evenementPosition(String nomPersoPrincipal){
         Random random = new Random();
         int randomCowBoy = random.nextInt(3);
         CowBoy cowboy = CowBoy.ArrayListCowBoy(randomCowBoy);
