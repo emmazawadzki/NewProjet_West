@@ -32,11 +32,11 @@ public class PriseDOtage {
         Sleep sleep = new Sleep();
         
         //Récupération de la position de l'utilisateur
-        int position=Position.evenementPosition(persoPrincipal.get(0).GetName());
+        int position=Position.evenementPosition(persoPrincipal.get(0).getName());
         
         //Information sur brigand
-        Brigand brigand = Brigand.ArrayListBrigand(brigandList,numListBrigand,false);
-        String nomBrigand=brigand.GetName();
+        Brigand brigand = Brigand.arrayListBrigand(brigandList,numListBrigand,false);
+        String nomBrigand=brigand.getName();
         
         System.out.println("< Soudain " + nomBrigand + " surgit et s’approche d’une femme pour la prendre en otage >");
         sleep.main(1000);
@@ -92,8 +92,8 @@ public class PriseDOtage {
         int situation = random.nextInt(4);
         
         //Information sur brigand
-        Brigand brigand = Brigand.ArrayListBrigand(brigandList,numListBrigand,false);
-        String nomBrigand=brigand.GetName();
+        Brigand brigand = Brigand.arrayListBrigand(brigandList,numListBrigand,false);
+        String nomBrigand=brigand.getName();
         
         //Situation aléaoire du comportement du brigand
         switch(situation){
@@ -243,7 +243,7 @@ public class PriseDOtage {
                 //Situation 1: Le brigand est tué
                 case 0,1,2 :
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
-                    Brigand.ArrayListBrigand(brigandList,numListBrigand,true);
+                    Brigand.arrayListBrigand(brigandList,numListBrigand,true);
                     System.out.println("< Vous avez tué le brigand >");
                     game=true;
                     break;
@@ -252,9 +252,9 @@ public class PriseDOtage {
                     persoPrincipal.get(0).tirer(choix_nb_balles, brigandList.get(numListBrigand), persoPrincipal.get(0));
                     System.out.println("< "+brigandList.get(numListBrigand).name+" a réussi à s'échapperé >");
                     sleep.main(1000);
-                    System.out.println("< "+persoPrincipal.get(0).GetName()+" : Mince, il est chanceux celui là >");
+                    System.out.println("< "+persoPrincipal.get(0).getName()+" : Mince, il est chanceux celui là >");
                     sleep.main(1000);
-                    System.out.println("< "+persoPrincipal.get(0).GetName()+" : Mais au moins, il est parti les mains vide >");
+                    System.out.println("< "+persoPrincipal.get(0).getName()+" : Mais au moins, il est parti les mains vide >");
                     break;
                 
             }

@@ -16,10 +16,10 @@ public class Brigand extends Humain implements Arme{
     Sleep sleep = new Sleep();
     
     
-    public static Brigand ArrayListBrigand(ArrayList<Brigand> brigandList,int numList,boolean change) {
+    public static Brigand arrayListBrigand(ArrayList<Brigand> brigandList,int numList,boolean change) {
         if(change==true){
             Brigand brigand=brigandList.get(numList);
-            String nomBrigand=brigand.GetName();
+            String nomBrigand=brigand.getName();
             brigandList.set(numList,new Brigand(nomBrigand,true));
         }
     
@@ -36,7 +36,7 @@ public class Brigand extends Humain implements Arme{
         quelEstTonNom();
     }
     
-    public Boolean GetEstMort(){
+    public Boolean getEstMort(){
         return this.estMort;
     }
     

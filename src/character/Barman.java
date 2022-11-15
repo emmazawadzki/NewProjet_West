@@ -85,15 +85,15 @@ public class Barman extends Humain{
                     switch (c_boisson){
                         case 1 :
                             choix_boisson = AlcoholDrink.Biere ;
-                            serveDrink(barman.GetName(),choix_boisson.name, nomPersoPrincipal);
+                            serveDrink(barman.getName(),choix_boisson.name, nomPersoPrincipal);
                             return choix_boisson.getPrice();
                         case 2 :
                             choix_boisson = AlcoholDrink.Vin ;
-                            serveDrink(barman.GetName(),choix_boisson.name, nomPersoPrincipal);
+                            serveDrink(barman.getName(),choix_boisson.name, nomPersoPrincipal);
                             return choix_boisson.getPrice();
                         case 3 :
                             choix_boisson = AlcoholDrink.Whisky ;
-                            serveDrink(barman.GetName(),choix_boisson.name, nomPersoPrincipal);
+                            serveDrink(barman.getName(),choix_boisson.name, nomPersoPrincipal);
                             return choix_boisson.getPrice();
                     }
                 break;
@@ -120,17 +120,17 @@ public class Barman extends Humain{
                     switch (c_boisson){
                         case 1 :
                             choix_boisson = SoftDrink.Eau ;
-                            serveDrink(barman.GetName(),choix_boisson.name, nomPersoPrincipal);
+                            serveDrink(barman.getName(),choix_boisson.name, nomPersoPrincipal);
                             return choix_boisson.getPrice();
                         case 2 :
                             choix_boisson = SoftDrink.Coca ;
-                            serveDrink(barman.GetName(),choix_boisson.name, nomPersoPrincipal);
+                            serveDrink(barman.getName(),choix_boisson.name, nomPersoPrincipal);
                             return choix_boisson.getPrice();
                     }
                     
                 break;
                 case 3 :
-                    serveDrink(barman.GetName(),boissonFavorite.name, nomPersoPrincipal);
+                    serveDrink(barman.getName(),boissonFavorite.name, nomPersoPrincipal);
                     return boissonFavorite.getPrice();
             }
             return 0;       

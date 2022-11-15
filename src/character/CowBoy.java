@@ -15,7 +15,7 @@ public class CowBoy extends Humain implements Arme{
     Sleep sleep = new Sleep();
     
     
-    public static CowBoy ArrayListCowBoy(int numList) {
+    public static CowBoy arrayListCowBoy(int numList) {
         ArrayList<CowBoy> cowboyList = new ArrayList<CowBoy>();
         cowboyList.add( new CowBoy("Fred","Beer",5));
         cowboyList.add( new CowBoy("Wilson","Wine",5));

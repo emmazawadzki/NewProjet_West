@@ -23,11 +23,11 @@ public abstract class Humain {
         this.name=name;
     }
     
-    public String GetName(){
+    public String getName(){
         return this.name;
     }
     
-    public String GetDrink(){
+    public String getDrink(){
         return this.boissonFavorite;
     }
 

@@ -122,7 +122,7 @@ public class ProjetWest {
                 if(i<5){
                     //Position du personage principale avant que le brigand arrive
                     game=PriseDOtage.evenementPriseDOtage(brigandList,persoPrin,i,money);
-                    if(Brigand.ArrayListBrigand(brigandList,i,false).GetEstMort()==true){
+                    if(Brigand.arrayListBrigand(brigandList,i,false).getEstMort()==true){
                         i++;
                     }
                     if(i==4){
