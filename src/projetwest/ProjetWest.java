@@ -8,9 +8,7 @@ package projetwest;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.text.SimpleDateFormat; 
 
 import management.*;
 import character.*;
@@ -57,9 +55,6 @@ public class ProjetWest {
         
         
         System.out.println("- - - - Nouvelle partie - - - -");
-        
-        //Monnaie du jeu
-        int solde=10000;
         
         
         

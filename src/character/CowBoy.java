@@ -28,8 +28,8 @@ public class CowBoy extends Humain implements Arme{
         super(name,boissonFavorite,nb_balles);
     }
     
-    public void sePresenter(){
-        quelEstTonNom();
+    public void sePresenter(String name){
+        System.out.print(name + ": Hey, quoi de neuf ? ");
     }
     
     

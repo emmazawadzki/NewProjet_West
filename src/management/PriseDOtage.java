@@ -40,7 +40,8 @@ public class PriseDOtage {
         
         System.out.println("< Soudain " + nomBrigand + " surgit et s’approche d’une femme pour la prendre en otage >");
         sleep.main(1000);
-        System.out.println("< "+nomBrigand + " : Cette femme retrouvera la liberté lorsque j’aurais reçu 2 000 dollars >");
+        brigand.sePresenter(nomBrigand);
+        System.out.printf("%s : Ne me faites pas de mal !!\n",DameEnDetresse.getRandomDameEnDetresse());
         sleep.main(1000);
         
         //Situation en fonction de la position du personnage principal
@@ -306,6 +307,7 @@ public class PriseDOtage {
         System.out.println("< "+brigandName + " est agité >");
         System.out.println("< Son arme pointe vers la femme >");
     }
+    
     public static void calmeFemme(String brigandName){
         System.out.println("< "+brigandName + " est calme >");
         System.out.println("< Son arme pointe vers la femme >");

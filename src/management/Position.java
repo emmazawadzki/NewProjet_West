@@ -6,7 +6,6 @@ package management;
 
 import character.CowBoy;
 import java.util.Random;
-import projetwest.*;
 import java.util.Scanner;
 
 /**
@@ -43,13 +42,17 @@ public class Position {
                     position="à l'entrée";
                     System.out.println("< "+cowboy.getName()+": Hey "+ nomPersoPrincipal + ", viens te joindre à ma table >");
                     sleep.main(1000);
+                    cowboy.sePresenter(cowboy.getName());
+                    System.out.println("Viens te joindre à ma table");
                     System.out.println("< Vous partez rejoindre "+ cowboy.getName() +" à sa table qui se situe près de l'entrée du saloon >");
                     sleep.main(1000);
                     break;
                 //Le personnage va rejoindre un cowboy situé entre l'entrée et le bar
                 case 2 :
                     position="entre l'entrée et le bar";
-                    System.out.println("< "+cowboy.getName()+": Hey "+ nomPersoPrincipal + ", viens te joindre à ma table >");
+                    cowboy.sePresenter(cowboy.getName());
+                    System.out.println("Viens te joindre à ma table");
+                    //System.out.println("< "+cowboy.getName()+": Hey "+ nomPersoPrincipal + ", viens te joindre à ma table >");
                     sleep.main(1000);
                     System.out.println(" Vous partez rejoindre "+ cowboy.getName() +" à sa table qui se situe entre le bar et l'entrée du saloon >");
                     sleep.main(1000);
@@ -57,7 +60,9 @@ public class Position {
                 //Le personnage va rejoindre un cowboy situé au bar
                 case 3 :
                     position="au bar";
-                    System.out.println("< "+cowboy.getName()+": Hey "+ nomPersoPrincipal + ", quoi de neuf ? >");
+                    cowboy.sePresenter(cowboy.getName());
+                    System.out.println();
+                    //System.out.println("< "+cowboy.getName()+": Hey "+ nomPersoPrincipal + ", quoi de neuf ? >");
                     sleep.main(1000);
                     System.out.println("< Vous discutez tranquillement avec "+ cowboy.getName() +" au bar >");
                     sleep.main(1000);

@@ -32,8 +32,8 @@ public class Brigand extends Humain implements Arme{
         this.estMort=estMort;
     }
     
-    public void sePresenter(){
-        quelEstTonNom();
+    public void sePresenter(String nom){
+        System.out.println("< "+nom + " : Cette femme retrouvera la liberté lorsque j’aurais reçu 2 000 dollars >");
     }
     
     public Boolean getEstMort(){

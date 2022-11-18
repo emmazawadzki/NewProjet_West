@@ -31,10 +31,7 @@ public abstract class Humain {
         return this.boissonFavorite;
     }
 
-    public abstract void sePresenter();
+    public abstract void sePresenter(String name);
     
-    public void quelEstTonNom(){
-        System.out.println(this.name + ": Bonjour, je m'appelle " + this.name);
-    }
     
 }

@@ -22,8 +22,8 @@ public class Barman extends Humain{
         super(name);
     }
     
-    public void sePresenter(){
-        quelEstTonNom();
+    public void sePresenter(String name){
+        System.out.println("< Bonjour ! Que puis-je vous servir ? >");
     }
     
     public void serveDrink(String name,String choix_boisson, String nomPersoP){
@@ -47,7 +47,8 @@ public class Barman extends Humain{
      
             while((choix_type_boisson != 1)  && (choix_type_boisson != 2) && (choix_type_boisson != 3)){
                 try{
-            System.out.println("< Bonjour ! Que puis-je vous servir ? >");
+            //System.out.println("< Bonjour ! Que puis-je vous servir ? >");
+            barman.sePresenter(name);
             sleep.main(1000);
             System.out.println("      "+"Boisson alcolisee  ? [1]");
             System.out.println("      "+"Boisson soft       ? [2]");
