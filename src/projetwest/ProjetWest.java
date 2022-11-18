@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import management.*;
 import character.*;
 import drink.*;
@@ -26,6 +29,7 @@ public class ProjetWest {
     public static void main(String[] args) {
         //La variable game correspond à l'état de la partie
         //Si game=true, la partie est toujours en cours sinon, la partie est fini
+        
         boolean game=true;
         
         boolean partieGagnee=false;
@@ -192,6 +196,21 @@ public class ProjetWest {
         }
         else if(nouvellePartie.equals("N") || nouvellePartie.equals("n")){
             game=false;
+            
+            
+            try {
+                File myFile = new File("./the_end.txt");
+                Scanner myReader = new Scanner(myFile);
+                while (myReader.hasNextLine()) {
+                        String data = myReader.nextLine();
+                        System.out.println(data);
+                }
+                myReader.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            
         }
         else{
             //A Modifier
